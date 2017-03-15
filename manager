@@ -1,14 +1,10 @@
 #!/usr/bin/env python3
 
-from datetime import datetime
 from rawkit.raw import Raw
-import pendulum
+from photolib import Image
 import sys
 
 if len(sys.argv) != 2:
     print("too many or too few arguments (expected one)")
 
-with Raw(sys.argv[1]) as raw:
-    timestamp = datetime.fromtimestamp(raw.metadata.timestamp)
-    #timestamp = arrow.get(raw.metadata.timestamp, "US/Central")
-    print(timestamp)
+print(Image.from_file(sys.argv[1]))
